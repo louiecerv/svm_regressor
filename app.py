@@ -60,7 +60,7 @@ def main():
     impact of hyperparameter tuning and visualize the predictions.
 
     Created by Louie F. Cervantes, M.Eng. (Information Engineering)"""
-    with st.expander("About"):
+    with st.expander("About this App"):
         st.markdown(about) 
 
     # Tabs for each problem
