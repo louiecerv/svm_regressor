@@ -50,40 +50,53 @@ def perform_svm_regression(df, problem_description, interpretation_text):
     st.write(interpretation_text)
 
 
-# --- App ---
-st.title("SVM Regressor Demo")
+def main():
+    # --- App ---
+    st.title("SVM Regressor Demo")
 
-# Tabs for each problem
-tab1, tab2, tab3 = st.tabs(
-    ["Business Problem", "Engineering Problem", "Education Problem"]
-)
+    about = """This app demonstrates the use of Support Vector Machine (SVM) regression 
+    for different problems: Business, Engineering, and Education.  Select a problem to 
+    view the dataset, train an SVM model, and interpret the results.  Explore the 
+    impact of hyperparameter tuning and visualize the predictions.
 
-# --- Business Problem ---
-with tab1:
-    df = pd.read_csv("business_data.csv")
-    perform_svm_regression(
-        df,
-        "**Business Problem:** Predicting customer churn based on usage patterns and demographics.",
-        "The model predicts customer churn rate based on usage patterns and demographics. "
-        "This information can be used to identify customers at risk of churning and take proactive steps to retain them.",
+    Created by Louie F. Cervantes, M.Eng. (Information Engineering)"""
+    with st.expander("About"):
+        st.markdown(about) 
+
+    # Tabs for each problem
+    tab1, tab2, tab3 = st.tabs(
+        ["Business Problem", "Engineering Problem", "Education Problem"]
     )
 
-# --- Engineering Problem ---
-with tab2:
-    df = pd.read_csv("engineering_data.csv")
-    perform_svm_regression(
-        df,
-        "**Engineering Problem:** Predicting the remaining useful life of an industrial machine based on sensor data.",
-        "The model predicts the remaining useful life of an industrial machine based on sensor data. "
-        "This information can be used to schedule maintenance and prevent costly downtime.",
-    )
+    # --- Business Problem ---
+    with tab1:
+        df = pd.read_csv("business_data.csv")
+        perform_svm_regression(
+            df,
+            "**Business Problem:** Predicting customer churn based on usage patterns and demographics.",
+            "The model predicts customer churn rate based on usage patterns and demographics. "
+            "This information can be used to identify customers at risk of churning and take proactive steps to retain them.",
+        )
 
-# --- Education Problem ---
-with tab3:
-    df = pd.read_csv("education_data.csv")
-    perform_svm_regression(
-        df,
-        "**Education Problem:** Predicting student performance on a standardized test based on study habits and previous grades.",
-        "The model predicts student performance on a standardized test based on study habits and previous grades. "
-        "This information can be used to identify students who may need extra help and provide them with appropriate support.",
-    )
+    # --- Engineering Problem ---
+    with tab2:
+        df = pd.read_csv("engineering_data.csv")
+        perform_svm_regression(
+            df,
+            "**Engineering Problem:** Predicting the remaining useful life of an industrial machine based on sensor data.",
+            "The model predicts the remaining useful life of an industrial machine based on sensor data. "
+            "This information can be used to schedule maintenance and prevent costly downtime.",
+        )
+
+    # --- Education Problem ---
+    with tab3:
+        df = pd.read_csv("education_data.csv")
+        perform_svm_regression(
+            df,
+            "**Education Problem:** Predicting student performance on a standardized test based on study habits and previous grades.",
+            "The model predicts student performance on a standardized test based on study habits and previous grades. "
+            "This information can be used to identify students who may need extra help and provide them with appropriate support.",
+        )
+
+if __name__ == "__main__":
+    main()
